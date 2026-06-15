@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile · TalentScope</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+</head>
+
+<body class="app-body">
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+  </div>
+
+  <header class="appbar glass">
+    <a href="dashboard.html" class="brand">
+      <span class="brand-mark">🎯</span>
+      <span class="brand-text"><strong>TalentScope</strong></span>
+    </a>
+    <nav class="appnav" id="appnav">
+      <a href="dashboard.html" class="appnav-link" data-page="dashboard">📊 Dashboard</a>
+      <a href="candidates.html" class="appnav-link" data-page="candidates">🧾 Candidates</a>
+      <a href="admin.html" class="appnav-link" data-page="admin" data-admin hidden>🛡️ Admin</a>
+      <a href="profile.html" class="appnav-link" data-page="profile">👤 Profile</a>
+    </nav>
+    <div class="appbar-right">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" title="Toggle theme">🌙</button>
+      <span class="user-chip" id="userChip">…</span>
+      <button id="logoutBtn" class="btn btn-danger-ghost btn-sm" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">My Profile</h1>
+        <p class="muted">Your account details and activity.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <section class="card glass">
+        <div class="profile-head">
+          <div class="avatar" id="avatar">?</div>
+          <div>
+            <h2 id="profileName">…</h2>
+            <span class="pill" id="profileRole">user</span>
+          </div>
+        </div>
+
+        <div class="profile-rows">
+          <div class="profile-row"><span class="muted">Full Name</span><strong id="rowName">—</strong></div>
+          <div class="profile-row"><span class="muted">Email</span><strong id="rowEmail">—</strong></div>
+          <div class="profile-row"><span class="muted">Role</span><strong id="rowRole">—</strong></div>
+          <div class="profile-row"><span class="muted">Member Since</span><strong id="rowSince">—</strong></div>
+          <div class="profile-row"><span class="muted">User ID</span><strong id="rowId">—</strong></div>
+        </div>
+      </section>
+
+      <section class="card glass">
+        <div class="section-head"><h2>📊 Your Activity</h2></div>
+        <div class="stat-grid stat-grid-2">
+          <article class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-body"><span class="stat-value" id="myTotal">0</span><span class="stat-label">Candidates</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-body"><span class="stat-value" id="myEligible">0</span><span class="stat-label">Eligible</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-body"><span class="stat-value" id="myPriority">0</span><span class="stat-label">Priority</span></div>
+          </article>
+          <article class="stat-card">
+            <div class="stat-icon">📈</div>
+            <div class="stat-body"><span class="stat-value" id="myAvg">0</span><span class="stat-label">Avg Skill</span></div>
+          </article>
+        </div>
+
+        <div class="profile-actions">
+          <a href="candidates.html" class="btn btn-primary">➕ Evaluate Candidate</a>
+          <button class="btn btn-danger-ghost" id="logoutBtn2" type="button">Logout</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin · TalentScope</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+</head>
+
+<body class="app-body">
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+  </div>
+
+  <header class="appbar glass">
+    <a href="dashboard.html" class="brand">
+      <span class="brand-mark">🎯</span>
+      <span class="brand-text"><strong>TalentScope</strong></span>
+    </a>
+    <nav class="appnav" id="appnav">
+      <a href="dashboard.html" class="appnav-link" data-page="dashboard">📊 Dashboard</a>
+      <a href="candidates.html" class="appnav-link" data-page="candidates">🧾 Candidates</a>
+      <a href="admin.html" class="appnav-link" data-page="admin" data-admin hidden>🛡️ Admin</a>
+      <a href="profile.html" class="appnav-link" data-page="profile">👤 Profile</a>
+    </nav>
+    <div class="appbar-right">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" title="Toggle theme">🌙</button>
+      <span class="user-chip" id="userChip">…</span>
+      <button id="logoutBtn" class="btn btn-danger-ghost btn-sm" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">🛡️ Admin Dashboard</h1>
+        <p class="muted">Platform-wide analytics and candidate management.</p>
+      </div>
+      <span class="pill pill-orange">Admin access</span>
+    </div>
+
+    <!-- ===== Global stats ===== -->
+    <section class="stat-grid" aria-live="polite">
+      <article class="stat-card glass">
+        <div class="stat-icon">🧑‍💼</div>
+        <div class="stat-body"><span class="stat-value" id="statUsers">0</span><span class="stat-label">Total Users</span></div>
+      </article>
+      <article class="stat-card glass">
+        <div class="stat-icon">👥</div>
+        <div class="stat-body"><span class="stat-value" id="statTotal">0</span><span class="stat-label">Total Candidates</span></div>
+      </article>
+      <article class="stat-card glass">
+        <div class="stat-icon">✅</div>
+        <div class="stat-body"><span class="stat-value" id="statEligible">0</span><span class="stat-label">Eligible</span></div>
+      </article>
+      <article class="stat-card glass">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-body"><span class="stat-value" id="statPriority">0</span><span class="stat-label">Priority</span></div>
+      </article>
+      <article class="stat-card glass">
+        <div class="stat-icon">📈</div>
+        <div class="stat-body"><span class="stat-value" id="statAvg">0</span><span class="stat-label">Avg Skill Score</span></div>
+      </article>
+    </section>
+
+    <!-- ===== All candidates ===== -->
+    <section class="card glass">
+      <div class="section-head">
+        <h2>🗂️ All Candidates</h2>
+        <span class="muted" id="adminCount">0 candidates</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search candidate by name…" />
+        </div>
+        <div class="sort-wrap">
+          <select id="filterSelect">
+            <option value="all">All statuses</option>
+            <option value="eligible">Eligible</option>
+            <option value="priority">Priority</option>
+            <option value="not-eligible">Not Eligible</option>
+          </select>
+          <select id="sortSelect">
+            <option value="recent">Sort: Recent</option>
+            <option value="skill">Sort: Skill</option>
+            <option value="salary">Sort: Salary</option>
+            <option value="projects">Sort: Projects</option>
+            <option value="rank">Sort: Rank</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="loader" id="adminLoader"><span class="spinner"></span> Loading…</div>
+
+      <div class="table-scroll" id="adminWrap" hidden>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Owner</th><th>Name</th><th>Age</th><th>Education</th><th>Skill</th>
+              <th>Projects</th><th>Salary</th><th>Confidence</th><th>Rank</th>
+              <th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminBody"></tbody>
+        </table>
+      </div>
+
+      <div class="empty-state" id="adminEmpty" hidden>
+        <span class="empty-emoji">🗂️</span>
+        <p>No candidates found.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
