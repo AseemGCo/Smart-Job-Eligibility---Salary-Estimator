@@ -15,7 +15,7 @@ const {
   DB_HOST = "localhost",
   DB_PORT = 3306,
   DB_USER = "root",
-  DB_PASSWORD = "",
+  DB_PASSWORD = "root123",
   DB_NAME = "talentscope",
   DB_SSL = "false",
 } = process.env;

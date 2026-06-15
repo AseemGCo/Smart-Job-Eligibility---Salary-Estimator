@@ -38,14 +38,31 @@ const allowedOrigins = (process.env.CORS_ORIGIN || "")
   .map((o) => o.trim())
   .filter(Boolean);
 
+const isProduction = (process.env.NODE_ENV || "development") === "production";
+const localhostRegex = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+
 app.use(
   cors({
     origin(origin, callback) {
-      // Allow non-browser tools (no origin) and any whitelisted origin.
-      if (!origin || allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+      // No Origin header => non-browser tools (curl, Postman) or same-origin
+      // navigations. Always allowed.
+      if (!origin) return callback(null, true);
+
+      // In development, be permissive: allow any localhost port and pages
+      // opened directly from disk (file:// sends the literal origin "null").
+      if (!isProduction && (origin === "null" || localhostRegex.test(origin))) {
         return callback(null, true);
       }
-      return callback(new Error(`CORS blocked for origin: ${origin}`));
+
+      // Otherwise only allow explicitly whitelisted origins.
+      if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Deny gracefully (no thrown error => no noisy 500). The browser will
+      // block the response because the CORS headers are absent.
+      console.warn(`⚠️  CORS: blocked request from origin "${origin}"`);
+      return callback(null, false);
     },
     credentials: true,
   })
@@ -68,6 +85,16 @@ app.use("/api", globalLimiter);
 /* ------------------------------------------------------------
    ROUTES
    ------------------------------------------------------------ */
+
+// Friendly root — this is an API server, there is no web page here.
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "TalentScope API. The web app is the separate frontend (e.g. http://localhost:5173).",
+    health: "/api/health",
+    endpoints: ["/api/auth", "/api/candidates", "/api/dashboard/stats"],
+  });
+});
 
 // Health check (useful for Render/Railway uptime probes).
 app.get("/api/health", (req, res) => {
