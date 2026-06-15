@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp .env.example .env)",
+      "Bash(node -e ' *)"
+    ]
+  }
+}
