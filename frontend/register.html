@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account · TalentScope</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+</head>
+
+<body class="auth-body">
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <div class="auth-wrap">
+    <div class="auth-card glass">
+      <a href="index.html" class="brand auth-brand">
+        <span class="brand-mark">🎯</span>
+        <span class="brand-text"><strong>TalentScope</strong></span>
+      </a>
+      <h1 class="auth-title">Create your account</h1>
+      <p class="muted auth-sub">Start evaluating candidates in seconds.</p>
+
+      <form id="registerForm" novalidate>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Aseem Gupta" autocomplete="name" />
+          <small class="error-msg" data-error-for="name"></small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+          <small class="error-msg" data-error-for="email"></small>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="Min 8 characters" autocomplete="new-password" />
+            <button type="button" class="toggle-pw" data-toggle="password" aria-label="Show password">👁️</button>
+          </div>
+          <!-- Password strength indicator -->
+          <div class="strength" id="strength" hidden>
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span class="strength-label" id="strengthLabel">Weak</span>
+          </div>
+          <small class="error-msg" data-error-for="password"></small>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Confirm Password</label>
+          <div class="password-wrap">
+            <input type="password" id="confirm" name="confirm" placeholder="Re-enter password" autocomplete="new-password" />
+            <button type="button" class="toggle-pw" data-toggle="confirm" aria-label="Show password">👁️</button>
+          </div>
+          <small class="error-msg" data-error-for="confirm"></small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="registerBtn">
+          <span class="btn-text">Create Account</span>
+        </button>
+      </form>
+
+      <p class="auth-switch">
+        Already have an account? <a href="login.html">Log in</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

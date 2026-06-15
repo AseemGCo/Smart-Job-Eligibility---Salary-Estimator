@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="TalentScope — an HR-tech platform to evaluate candidates, estimate salaries, and track hiring analytics." />
+  <title>TalentScope — Smart Job Eligibility &amp; Salary Estimator</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+</head>
+
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <!-- ===== Navbar ===== -->
+  <header class="navbar glass">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">🎯</span>
+      <span class="brand-text"><strong>TalentScope</strong></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <button id="themeToggle" class="btn btn-ghost btn-sm" type="button" title="Toggle theme">🌙</button>
+      <a href="login.html" class="btn btn-ghost btn-sm" data-guest>Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm" data-guest>Get Started</a>
+      <a href="dashboard.html" class="btn btn-primary btn-sm" data-auth hidden>Go to Dashboard</a>
+    </nav>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="pill pill-blue hero-tag">⚡ HR-Tech · Full-Stack · Vanilla JS</span>
+        <h1 class="hero-title">Hire smarter with <span class="grad-text">data-driven</span> candidate scoring</h1>
+        <p class="hero-sub">
+          TalentScope instantly evaluates interview eligibility, estimates salary ranges,
+          scores confidence, and ranks your talent pool — backed by a secure Node.js +
+          MySQL API with JWT authentication.
+        </p>
+        <div class="hero-actions">
+          <a href="register.html" class="btn btn-primary btn-lg" data-guest>Create Free Account</a>
+          <a href="login.html" class="btn btn-ghost btn-lg" data-guest>I already have an account</a>
+          <a href="dashboard.html" class="btn btn-primary btn-lg" data-auth hidden>Open Dashboard →</a>
+        </div>
+        <p class="hero-demo muted">
+          Demo login — <strong>priya@example.com</strong> / <strong>Password@123</strong>
+        </p>
+      </div>
+
+      <div class="hero-card glass">
+        <div class="hc-row">
+          <span class="status-badge status-priority">⭐ Priority Candidate</span>
+          <span class="rank-chip">Rank 86.6</span>
+        </div>
+        <div class="hc-grid">
+          <div class="hc-box"><span class="rb-label">Salary</span><span class="rb-value">₹12-20 LPA</span></div>
+          <div class="hc-box"><span class="rb-label">Confidence</span><span class="rb-value">High</span></div>
+        </div>
+        <div class="meter"><div class="meter-fill skill-fill" style="width:88%"></div></div>
+        <small class="muted">Skill Score 88 / 100</small>
+      </div>
+    </section>
+
+    <!-- ===== Feature grid ===== -->
+    <section class="features">
+      <article class="feature glass">
+        <span class="feature-ico">🔐</span>
+        <h3>Secure Auth</h3>
+        <p>JWT sessions, bcrypt-hashed passwords, protected routes, and role-based access.</p>
+      </article>
+      <article class="feature glass">
+        <span class="feature-ico">🧮</span>
+        <h3>Server-side Rules</h3>
+        <p>Eligibility, salary, confidence &amp; ranking computed on the backend for consistency.</p>
+      </article>
+      <article class="feature glass">
+        <span class="feature-ico">📊</span>
+        <h3>Live Analytics</h3>
+        <p>Dashboards with totals, eligibility counts, averages, and your top performer.</p>
+      </article>
+      <article class="feature glass">
+        <span class="feature-ico">🗄️</span>
+        <h3>Persistent MySQL</h3>
+        <p>Every candidate is stored relationally and tied to your account.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Built with <strong>HTML5 · CSS3 · Vanilla JS · Node.js · Express · MySQL</strong></p>
+    <p class="muted">© <span id="year"></span> TalentScope · JavaScript Power Challenge</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>
